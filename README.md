@@ -1,20 +1,32 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Ayah4You
 
-# Run and deploy your AI Studio app
+A simple and beautiful web app that displays a random, inspirational verse from the Quran to bring wisdom and guidance to your daily life.
 
-This contains everything you need to run your app locally.
+**Live Demo:** [Link will be added here after we deploy to Netlify!]
 
-View your app in AI Studio: https://ai.studio/apps/drive/1s064RXoy2HH1pTV9zOSxkkKYNv2eMmVI
+---
 
-## Run Locally
+## ✨ Features
 
-**Prerequisites:**  Node.js
+- Displays a random Ayah (verse) on demand.
+- Clean, modern UI with soothing animations.
+- Arabic text, English translation, and surah reference.
+- Fully responsive for desktop and mobile devices.
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🛠️ Tech Stack
+
+- **Frontend:** React, TypeScript
+- **Styling:** Tailwind CSS
+- **Data:** Verses fetched from the [AlQuran.Cloud API](https://alquran.cloud/api).
+
+---
+
+## 🚀 How to Run Locally
+
+This project is a static site and requires no build step.
+
+1.  Clone the repository: `git clone https://github.com/OmeirMustafa/Ayah4You.git`
+2.  Navigate into the directory: `cd Ayah4You`
+3.  Open the `index.html` file in your browser.
