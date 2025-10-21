@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayah4You</title>
+
+    <!-- Preload Fonts to prevent FOUT -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7e0Q5nw.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/amiri/v26/J7aRnpd8CGxBHqUwcQYD_0s.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/amiri/v26/J7afnpd8CGxBHpUrtLYS-28l.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/amiri/v26/J7acnpd8CGxBHpUjC414-UK0.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-amiri {
+        font-family: 'Amiri', serif;
+      }
+
+      /* Custom Animation Classes */
+      .animate-subtle-float { animation: subtle-float 6s ease-in-out infinite; }
+      .animate-deep-float { animation: deep-float 8s ease-in-out infinite; }
+      .animate-pulse { animation: pulse 4s ease-in-out infinite; }
+      .animate-blob { animation: blob 20s ease-in-out infinite; }
+      .animate-blob2 { animation: blob 25s ease-in-out -8s infinite; }
+      .animate-blob3 { animation: blob 18s ease-in-out -4s infinite; }
+      .animate-bubble-out { animation: bubble-out 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      .animate-card-enter { animation: card-enter 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      .animate-fade-out-quick { animation: fade-out-quick 0.3s ease-in forwards; }
+
+      /* Keyframes */
+      @keyframes subtle-float {
+        0%, 100% { transform: translateY(-4px); }
+        50% { transform: translateY(4px); }
+      }
+      @keyframes deep-float {
+        0%, 100% { transform: translateY(-10px) rotate(-1deg); }
+        50% { transform: translateY(10px) rotate(1deg); }
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(20px, -30px) scale(1.03); }
+        66% { transform: translate(-15px, 25px) scale(0.97); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+      @keyframes bubble-out {
+        0% { transform: scale(1); opacity: 1; filter: blur(0px); }
+        30% { transform: scale(1.05); opacity: 0.9; filter: blur(4px); }
+        100% { transform: scale(0); opacity: 0; filter: blur(24px); }
+      }
+      @keyframes card-enter {
+        0% { transform: scale(0.8) translateY(20px); opacity: 0; filter: blur(16px); }
+        100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0px); }
+      }
+      @keyframes fade-out-quick {
+        from { opacity: 1; transform: scale(1); }
+        to { opacity: 0; transform: scale(0.95); filter: blur(8px); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
