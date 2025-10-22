@@ -105,19 +105,47 @@ export const verses: Ayah[] = [
  * @param currentAyah The currently displayed Ayah, or null if none.
  * @returns A Promise that resolves with a new Ayah.
  */
-export const fetchRandomAyah = (currentAyah: Ayah | null): Promise<Ayah> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      // Simulate a 20% chance of failure for demonstration
-      if (Math.random() < 0.2) {
-        reject(new Error('Failed to load verse.'));
-      } else {
-        let newAyah;
-        do {
-          newAyah = verses[Math.floor(Math.random() * verses.length)];
-        } while (currentAyah && newAyah.englishText === currentAyah.englishText);
-        resolve(newAyah);
-      }
-    }, 600); // Simulate network latency
-  });
+// This is the real function that connects to the internet
+export const fetchRandomAyah = async (currentAyah: Ayah | null): Promise<Ayah> => {
+  // A function to get a random verse number from 1 to 6236 (total verses in Quran)
+  const getRandomVerseNumber = () => {
+    return Math.floor(Math.random() * 6236) + 1;
+  };
+
+  let verseNumber = getRandomVerseNumber();
+
+  // Keep getting a new number if it's the same as the current one
+  if (currentAyah) {
+    // We need to parse the current ayah's number if it's a string like '5-6'
+    const currentSimpleNumber = parseInt(String(currentAyah.ayahNumber).split('-')[0]);
+    while (verseNumber === currentSimpleNumber) {
+      verseNumber = getRandomVerseNumber();
+    }
+  }
+
+  // The real API endpoint with the random verse number
+  const API_URL = `https://api.alquran.cloud/v1/ayah/${verseNumber}/en.sahih`;
+
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      // If the server responds with an error, throw an error
+      throw new Error('Network response was not ok.');
+    }
+    const json = await response.json();
+    
+    // The API gives us back a complex object, we need to simplify it for our app
+    const newAyah: Ayah = {
+      englishText: json.data.text,
+      surahName: json.data.surah.englishName,
+      surahNumber: json.data.surah.number,
+      ayahNumber: json.data.numberInSurah,
+    };
+
+    return newAyah;
+  } catch (error) {
+    console.error("Failed to fetch Ayah:", error);
+    // If anything goes wrong, we throw an error so the app can display the message
+    throw new Error('Could not load verse. Please try again.');
+  }
 };
